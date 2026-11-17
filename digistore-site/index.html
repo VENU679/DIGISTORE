@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DIGISTORE — Small downloads. Limitless possibilities.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#173f35;--moss:#2f6b57;--sage:#8fae9b;--clay:#b4573b;--ochre:#c89b3c;--plum:#5a3a4f;--navy:#26435c;--bg:#0e1513;--ink:#f3efe4;--mut:#a7b2ad;--acc:#e9d8a6;--cov:#173f35}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(90% 70% at 70% 20%,#1f5244,#0f2c25 55%,#0a1512) fixed;color:var(--ink);font:400 17px/1.6 'Instrument Sans',system-ui,sans-serif;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:18px 7vw}
+.brand{font:600 22px 'Fraunces',serif;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+nav div a{color:var(--mut);text-decoration:none;margin-left:22px;font-size:15px}
+nav div a:hover{color:var(--ink)}
+.sec{position:relative;z-index:1;height:120vh;display:flex;align-items:center;padding:0 7vw}
+.sec.r{justify-content:flex-end}
+.sec.c{justify-content:center;align-items:flex-end;padding-bottom:7vh;text-align:center}
+.panel{max-width:440px}
+h1,h2{font-family:'Fraunces',system-ui,sans-serif;line-height:1.03;letter-spacing:-.025em}
+h1{font-size:clamp(42px,6vw,80px);font-weight:600}h1 em,h2 em{font-style:italic;font-weight:500}
+h2{font-size:clamp(32px,4vw,52px);font-weight:600}
+p{color:var(--mut);margin-top:14px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.sec.c .btns{justify-content:center}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;color:#10201a;background:var(--acc);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.28)}
+a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.panel ul{margin:14px 0 0;padding-left:20px;color:var(--mut)}.panel li{margin:7px 0}
+.hint{margin-top:32px;font-size:14px;color:var(--mut)}
+@media(max-width:760px){
+ .sec,.sec.r,.sec.c{justify-content:flex-start;align-items:flex-end;padding:0 18px 6vh;text-align:left}
+ .panel{max-width:none;background:rgba(11,17,21,.78);backdrop-filter:blur(10px);padding:18px 20px;border-radius:16px}
+ .sec.c .btns{justify-content:flex-start}
+ nav div a:first-child{display:none}
+}
+.after{position:relative;z-index:2;background:linear-gradient(rgba(10,21,18,0),rgba(10,21,18,.6) 24vh);padding:12vh 7vw 5vh}
+.after section{max-width:1080px;margin:0 auto 12vh}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+.card{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px}
+.card h3{font:600 22px 'Fraunces',serif}.card p{margin-top:8px;font-size:16px}
+details{border-bottom:1px solid rgba(255,255,255,.14);padding:16px 0;max-width:760px}summary{cursor:pointer;font-weight:600}
+footer{max-width:1080px;margin:0 auto;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);font-size:14px;color:var(--mut)}
+.eyebrow{display:block;font:600 12px 'Instrument Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 6px;align-items:center}
+.chip{border:1px solid rgba(255,255,255,.25);background:none;color:var(--ink);padding:9px 18px;border-radius:999px;font:inherit;font-size:15px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--acc);color:#10201a;border-color:var(--acc)}
+#q{margin-left:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:var(--ink);padding:9px 16px;border-radius:999px;font:inherit;font-size:15px;min-width:200px}
+.shelf{margin-top:48px}.shelf h3{font:600 15px 'Instrument Sans',sans-serif;color:var(--mut);margin-bottom:14px;padding-left:4%}
+.row{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,38px);align-items:end;padding:34px 5% 20px}
+.row::before{content:'';position:absolute;inset:0;z-index:0;border-radius:20px 20px 0 0;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.2) 42%,transparent 56%),linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.1));border:1px solid rgba(255,255,255,.45);border-bottom:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 0 40px rgba(255,255,255,.07)}
+.row>*{position:relative;z-index:1}
+.stage{container-type:size;aspect-ratio:3/4.1;min-width:150px;perspective:1000px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}.stage:active{cursor:grabbing}
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(4deg) rotateY(-18deg);--d:38px}
+.f{position:absolute;backface-visibility:hidden;overflow:hidden;color:#fff;text-align:left}
+.fr{inset:0;transform:translateZ(calc(var(--d)/2));border-radius:3px 10px 10px 3px;background:linear-gradient(150deg,var(--c),color-mix(in srgb,var(--c) 55%,#000));padding:18px 16px 16px 26px;display:flex;flex-direction:column;box-shadow:inset 8px 0 0 rgba(0,0,0,.2)}
+.bc{inset:0;transform:rotateY(180deg) translateZ(calc(var(--d)/2));background:color-mix(in srgb,var(--c) 65%,#000);padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px;font-size:14px;line-height:1.5}
+.sp{width:var(--d);height:100%;left:calc(50% - var(--d)/2);background:color-mix(in srgb,var(--c) 60%,#000);transform:rotateY(-90deg) translateZ(50cqw);display:flex;align-items:center;justify-content:center}
+.sp span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 14px 'Fraunces',serif;white-space:nowrap}
+.pg{width:var(--d);height:100%;left:calc(50% - var(--d)/2);background:repeating-linear-gradient(90deg,#f3efe4 0 2px,#d9d0b8 2px 3px);transform:rotateY(90deg) translateZ(50cqw)}
+.tp,.bt{height:var(--d);width:100%;top:calc(50% - var(--d)/2);background:repeating-linear-gradient(0deg,#f3efe4 0 2px,#d9d0b8 2px 3px)}
+.tp{transform:rotateX(90deg) translateZ(50cqh)}.bt{transform:rotateX(-90deg) translateZ(50cqh)}
+.fr small,.bc small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.fr h4{font:600 clamp(20px,2.2vw,28px)/1.1 'Fraunces',Georgia,serif;margin:14px 0 6px}
+.fr i,.bc i{font:italic 500 16px 'Fraunces',serif}
+.fr .foot{margin-top:auto;font-size:13px;line-height:1.4}.fr .foot b{display:block;font-weight:600}
+.tag{align-self:flex-start;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:2px 9px;margin-bottom:10px}
+.cap{margin-top:26px;text-align:center}.cap b{display:block;font:600 19px 'Fraunces',serif}.cap .price{color:var(--acc);font-size:15px}
+.ledge{height:22px;margin:0 1%;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.06) 60%,rgba(255,255,255,.14));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 26px 40px -20px rgba(0,0,0,.65)}
+.hintline{font-size:14px;color:var(--mut);margin-top:6px}
+.note{margin-top:34px;font-size:15px;max-width:640px}
+.num{font:italic 500 18px 'Fraunces',serif;color:var(--acc)}
+.badge{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--acc);color:#10201a;font:600 20px 'Fraunces',serif;margin-bottom:14px}
+.card.soon{opacity:.75;border-style:dashed}.soon .badge{background:var(--sage)}
+.cta{text-align:center;padding:10vh 6vw;border-radius:28px;background:radial-gradient(120% 140% at 50% 0%,rgba(233,216,166,.16),transparent 60%),var(--forest)}
+.cta .btns{justify-content:center}
+footer .cols{display:flex;gap:48px;flex-wrap:wrap;justify-content:space-between}footer h5{font:600 12px 'Instrument Sans';letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}footer a{display:block;color:var(--mut);text-decoration:none;margin:4px 0}footer a:hover{color:var(--ink)}
+@media(max-width:760px){#q{margin-left:0;width:100%}.row{overflow-x:auto}}
+.nogl #gl{display:none}.nogl .sec{height:auto;padding-top:12vh;padding-bottom:12vh}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<nav><a class="brand" href="#top">DIGISTORE.</a><div><a href="#collection">The collection</a><a href="#why">Why DIGISTORE</a><a href="#how">How it works</a></div></nav>
+
+<!-- Scroll sections beside the book. Edit text here; the book's own pages are in the PAGES block in the script. -->
+<section class="sec" id="top"><div class="panel"><h1>Your next <em>great chapter.</em></h1><p>Thoughtful ebooks, practical guides, and little tools for big ideas. Scroll to open a world of possibility.</p><div class="btns"><a class="btn" href="#collection">Skip to the shelf</a></div></div></section>
+<section class="sec r"><div class="panel"><h2>How we <em>can buy.</em></h2><ul><li>Explore the collection and open a product.</li><li>Choose Superprofile or Gumroad (Amazon KDP is coming).</li><li>Review price, format and terms, then pay on that platform.</li></ul><p>Payments happen on the selling platform, not on DIGISTORE.</p></div></section>
+<section class="sec"><div class="panel"><h2>Why it’s <em>worth it.</em></h2><ul><li>Your shelf, without the weight: files stay on your device.</li><li>Read at your own pace, again and again.</li><li>Guides and templates are ready-made starting points.</li></ul><p>Chapters you can see in the book: Discover and purchase, The advantages, After checkout, Good to know.</p></div></section>
+<section class="sec c"><div class="panel"><h2>What you <em>walk away with.</em></h2><p>A fresh perspective, practical tools to return to, and a starting point for your next project.</p><div class="btns"><a class="btn" href="#collection">Explore the collection</a></div></div></section>
+
+<main class="after">
+<section id="collection"><span class="eyebrow">The digital shelf / Vol. 01</span><h2>Good things, <em>beautifully digital.</em></h2><p>A collection for the curious. Discover something that moves you forward.</p>
+<div class="chips" role="group" aria-label="Filter the shelf"><span class="eyebrow" style="margin:0 8px 0 0">Selected with intention</span><button class="chip" aria-pressed="true" data-f="all">All products</button><button class="chip" aria-pressed="false" data-f="Ebooks">Ebooks</button><button class="chip" aria-pressed="false" data-f="PDF Guides">PDF Guides</button><button class="chip" aria-pressed="false" data-f="Templates">Templates</button><input id="q" type="search" placeholder="Find your next favorite" aria-label="Search the shelf"></div>
+<div class="shelf" data-cat="Ebooks"><h3>Ebooks</h3><div class="row"><article class="bk" data-t="the digital starter kit"><div class="stage" style="--c:var(--forest)" role="img" aria-label="The Digital Starter Kit, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>The Digital Starter Kit</h4><i>Ideas into action.</i><div class="foot"><b>Ebooks</b>Your next chapter starts here.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>Your next chapter starts here.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>The Digital Starter Kit</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>The Digital Starter Kit</b><span class="price">Price on storefront</span></p></article><article class="bk" data-t="mindful productivity"><div class="stage" style="--c:var(--moss)" role="img" aria-label="Mindful Productivity, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>Mindful Productivity</h4><i>Ideas into action.</i><div class="foot"><b>Ebooks</b>Less noise. More meaningful progress.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>Less noise. More meaningful progress.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>Mindful Productivity</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>Mindful Productivity</b><span class="price">Price on storefront</span></p></article><article class="bk" data-t="the money mindset"><div class="stage" style="--c:var(--navy)" role="img" aria-label="The Money Mindset, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>The Money Mindset</h4><i>Ideas into action.</i><div class="foot"><b>Ebooks</b>A fresh perspective on your future.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>A fresh perspective on your future.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>The Money Mindset</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>The Money Mindset</b><span class="price">Price on storefront</span></p></article></div><div class="ledge"></div></div>
+<div class="shelf" data-cat="PDF Guides"><h3>PDF Guides</h3><div class="row"><article class="bk" data-t="the creator playbook"><div class="stage" style="--c:var(--clay)" role="img" aria-label="The Creator Playbook, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>The Creator Playbook</h4><i>Ideas into action.</i><div class="foot"><b>PDF Guides</b>Turn your ideas into something real.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>Turn your ideas into something real.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>The Creator Playbook</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>The Creator Playbook</b><span class="price">Price on storefront</span></p></article></div><div class="ledge"></div></div>
+<div class="shelf" data-cat="Templates"><h3>Templates</h3><div class="row"><article class="bk" data-t="your everyday planner"><div class="stage" style="--c:var(--ochre)" role="img" aria-label="Your Everyday Planner, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>Your Everyday Planner</h4><i>Ideas into action.</i><div class="foot"><b>Templates</b>Make room for what matters.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>Make room for what matters.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>Your Everyday Planner</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>Your Everyday Planner</b><span class="price">Price on storefront</span></p></article><article class="bk" data-t="the content toolkit"><div class="stage" style="--c:var(--plum)" role="img" aria-label="The Content Toolkit, drag to rotate"><div class="cube"><div class="f fr"><small class="tag">PDF · Sample edition</small><small>The Digi Store · The essentials series</small><h4>The Content Toolkit</h4><i>Ideas into action.</i><div class="foot"><b>Templates</b>Create with a little more clarity.<br>Sample preview · Not for sale</div></div><div class="f bc"><small>The Digi Store</small><i>Create with a little more clarity.</i><span>Ideas into action.</span><span>Sample preview · Not for sale. Live pricing and availability are confirmed on the selected storefront.</span></div><div class="f sp"><span>The Content Toolkit</span></div><div class="f pg"></div><div class="f tp"></div><div class="f bt"></div></div></div><p class="cap"><b>The Content Toolkit</b><span class="price">Price on storefront</span></p></article></div><div class="ledge"></div></div>
+<p class="hintline">Hover a book to see it turn. Drag to look at every side.</p>
+<p class="note">Our sample editions show what’s possible. They are previews, not products for sale. Live pricing and availability are confirmed on the selected storefront.</p></section>
+
+<section id="why"><span class="eyebrow">The Digistore philosophy</span><h2>Less noise. <em>More possibility.</em></h2><p>We believe a small resource can open up a whole new way of thinking.</p><p>Welcome to The Digi Store — your digital shopping destination for knowledge, creativity, and everyday progress. Considered resources. Useful perspectives. Everything you need to make your next chapter a little more you.</p>
+<div class="grid"><div class="card"><span class="num">/01</span><h3>Quality, without the clutter.</h3><p>Thoughtfully presented ebooks and resources that make worthwhile ideas easier to discover.</p></div><div class="card"><span class="num">/02</span><h3>Value that stays with you.</h3><p>Fresh perspectives and practical tools to return to, at your pace and on your terms.</p></div><div class="card"><span class="num">/03</span><h3>Simple from the start.</h3><p>Explore here. Choose your storefront. Let the selling platform handle checkout and delivery.</p></div></div></section>
+
+<section id="how"><span class="eyebrow">A simple little journey</span><h2>Find it. Choose it. <em>Make it yours.</em></h2><p>Three steps between a little curiosity and your next discovery.</p>
+<div class="grid"><div class="card"><span class="num">01</span><h3>Follow your curiosity.</h3><p>Explore the collection. Find the read, guide, or resource that feels right for your next chapter.</p></div><div class="card"><span class="num">02</span><h3>Choose your storefront.</h3><p>Visit Superprofile, Gumroad, or Amazon when linked. Review the details and complete payment there.</p></div><div class="card"><span class="num">03</span><h3>Let the ideas unfold.</h3><p>Receive your purchase through your chosen platform, then read, create, and put your ideas into motion.</p></div></div></section>
+
+<section id="stores"><span class="eyebrow">Your store. Your choice.</span><h2>A familiar place <em>to find us.</em></h2><p>The same curiosity. The same DIGISTORE. Choose the storefront that suits you.</p>
+<div class="grid"><a class="card" href="#" style="text-decoration:none;color:inherit"><div class="badge">S</div><h3>Superprofile</h3><p>Your digital discovery starts here.</p><p><b>Explore the storefront</b></p></a><a class="card" href="#" style="text-decoration:none;color:inherit"><div class="badge">g</div><h3>Gumroad</h3><p>A little more from our creator shelf.</p><p><b>Explore the storefront</b></p></a><div class="card soon"><div class="badge">a</div><span class="eyebrow">Coming soon</span><h3>Amazon KDP</h3><p>Our next chapter is on its way.</p><p><b>Something to look forward to</b></p></div></div>
+<p class="note">Payment, delivery, and refund terms are managed by the platform where you purchase.</p></section>
+
+<section id="faq"><span class="eyebrow">Before you turn the page</span><h2>A little clarity <em>goes a long way.</em></h2><p>Still curious about something? A friendly conversation is one DM away.</p>
+<div class="btns"><a class="btn" href="https://www.instagram.com/thedigistore_official/" target="_blank" rel="noopener">Let’s talk on Instagram</a></div><div style="margin-top:28px"><details><summary>What can I find at DIGISTORE?</summary><p>DIGISTORE brings together ebooks, practical PDF guides, planners, and creator resources. Explore the collection to find resources for learning, creating, and making your everyday a little more intentional. Items labeled Sample preview show how future products will look and are not available for purchase.</p></details><details><summary>How do I purchase a digital product?</summary><p>Open a product to choose Superprofile, Gumroad, or Amazon when a link is available. Copy the selected storefront address and open it in your browser. Check the actual product, price, format, and terms there before completing your purchase. Store-level links do not guarantee that a particular product is available.</p></details><details><summary>How will I receive my purchase?</summary><p>The platform where you complete checkout manages payment confirmation and file delivery. Check the product listing for the available format and delivery method, and use the same email address at checkout that you can access.</p></details><details><summary>Can I get a refund?</summary><p>Refund eligibility depends on the product listing and the platform where you purchased it. Review those terms before buying. For help, contact the selling platform or message @thedigistore_official on Instagram with your order details; never send payment card details.</p></details><details><summary>Can I read the products on my phone?</summary><p>Compatibility depends on the file format shown on the live product listing. PDFs can generally be read with a PDF reader, while Kindle editions use supported Kindle devices or apps. Confirm compatibility on the selected storefront before purchasing.</p></details></div></section>
+
+<section class="cta"><span class="eyebrow">Let curiosity lead the way</span><h2>Your next chapter. <em>Just a download away.</em></h2><p>Something to learn. Something to make. Something that could change your everyday.</p><div class="btns"><a class="btn" href="#collection">Find your next favorite</a><a class="btn o" href="https://www.instagram.com/thedigistore_official/" target="_blank" rel="noopener">Say hello</a></div><p class="eyebrow" style="margin-top:28px">Quality. Value. Convenience. Always.</p></section>
+
+<footer style="margin-top:12vh"><div class="cols"><div><a class="brand" href="#top">DIGISTORE.</a><p>Thoughtfully created digital resources.<br>A little inspiration. A world of possibilities.</p></div><div><h5>Explore</h5><a href="#collection">The collection</a><a href="#why">Why DIGISTORE</a><a href="#how">How it works</a></div><div><h5>Our storefronts</h5><a href="#stores">Superprofile</a><a href="#stores">Gumroad</a><a href="#stores">Amazon KDP (soon)</a></div><div><h5>Let’s connect</h5><p>Questions or something in mind? We’re a DM away.</p><a href="https://www.instagram.com/thedigistore_official/" target="_blank" rel="noopener">Say hello</a></div></div><p style="margin-top:36px">© 2026 DIGISTORE. All rights reserved. Digital by nature. Limitless by design.</p></footer>
+</main>
+<script>
+(function(){var chips=document.querySelectorAll('.chip'),q=document.getElementById('q'),f='all';
+function run(){var term=q.value.trim().toLowerCase();document.querySelectorAll('.shelf').forEach(function(sh){var any=false;sh.querySelectorAll('.bk').forEach(function(b){var ok=b.dataset.t.indexOf(term)>-1;b.style.visibility=ok?'':'hidden';if(ok)any=true});sh.hidden=!((f==='all'||sh.dataset.cat===f)&&any)})}
+chips.forEach(function(c){c.addEventListener('click',function(){f=c.dataset.f;chips.forEach(function(x){x.setAttribute('aria-pressed',x===c)});run()})});q.addEventListener('input',run)})();
+</script>
+
+
+
+<script type="module">
+import * as THREE from 'three';
+
+/* ===== PAGES: how to buy, advantages, chapters, outcome. e = label, t = title, i = [heading, body] pairs. f = right page, b = back of the leaf ===== */
+const IMG={};
+const INSIDE={e:'The Digistore edition',t:'Vol. 01',i:[['','Small files. Beautiful beginnings.']]};
+const PAGES=[
+ {f:{n:1,e:'Chapter two \u00b7 Purchase',t:'How we can buy.',i:[['1. Explore the collection.','Use the category filters or search to find a title that speaks to you.'],['2. Choose your storefront.','Superprofile and Gumroad are linked. Amazon KDP will be available when its link is added.'],['3. Review, then purchase.','Confirm the title, price, delivery, and terms. Payments happen on that platform, not on DIGISTORE.']]},
+  b:{n:2,e:'Chapter three \u00b7 The advantages',t:'What are the advantages?',i:[['Your shelf, without the weight.','Keep supported digital files on your device.'],['Read at your own pace.','Return to useful ideas whenever you like.'],['Room for creativity.','Guides and templates give your next project a starting point.']]}},
+ {f:{n:3,e:'Table of contents',t:'Which chapters can we see?',i:[['Chapter two','Discover and purchase.'],['Chapter three','The advantages and everyday value.'],['Chapter four','After checkout, and making it yours.'],['Chapter five','Good to know, and here to help.']]},
+  b:{n:4,e:'Chapter four \u00b7 Make it yours',t:'What is the outcome?',i:[['A fresh perspective.','Practical tools to return to, at your pace and on your terms.'],['A starting point.','Ideas turned into your next read, guide, or creative project.'],['Your next chapter.','Something to learn. Something to make. Something that could change your everyday.']]}}
+];
+/* ===== end of editable block ===== */
+
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{renderer=new THREE.WebGLRenderer({canvas:document.getElementById('gl'),antialias:true,alpha:true})}
+catch(e){document.body.classList.add('nogl')}
+if(renderer){
+const sm=t=>t*t*(3-2*t),cl=(v,a,b)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(38,1,.1,100);cam.position.set(0,0,9);
+scene.add(new THREE.AmbientLight(0xffffff,1.0));
+const key=new THREE.DirectionalLight(0xfff1dc,2.4);key.position.set(3,4,6);scene.add(key);
+const rim=new THREE.DirectionalLight(0x6fb6ff,1.3);rim.position.set(-4,2,-3);scene.add(rim);
+
+// ---- live 3D wallpaper: drifting glow dust + slow glass shapes, with pointer parallax ----
+const bg=new THREE.Group();scene.add(bg);
+const pal=['#e9d8a6','#3f9a7c','#8fae9b'].map(c=>new THREE.Color(c));
+const NP=innerWidth<760?450:1100,pp=new Float32Array(NP*3),pc=new Float32Array(NP*3);
+for(let i=0;i<NP;i++){pp[i*3]=(Math.random()-.5)*36;pp[i*3+1]=(Math.random()-.5)*22;pp[i*3+2]=-3-Math.random()*16;const c=pal[i%3];pc.set([c.r,c.g,c.b],i*3)}
+const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));pg.setAttribute('color',new THREE.BufferAttribute(pc,3));
+const dotTex=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(.3,'rgba(255,255,255,.35)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)})();
+const dust=new THREE.Points(pg,new THREE.PointsMaterial({size:.24,map:dotTex,vertexColors:true,transparent:true,opacity:.75,depthWrite:false,blending:THREE.AdditiveBlending}));bg.add(dust);
+const shapes=[];
+(async()=>{let env=null;
+ try{const {RoomEnvironment}=await import('three/addons/environments/RoomEnvironment.js');env=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture}catch(e){}
+ const ax=Math.min(1,innerWidth/innerHeight/1.7);
+ const GG=[new THREE.SphereGeometry(.8,48,32),new THREE.TorusGeometry(.8,.24,24,64),new THREE.IcosahedronGeometry(.85,0),new THREE.BoxGeometry(1.1,1.1,1.1),new THREE.OctahedronGeometry(.95,0),new THREE.CylinderGeometry(.55,.55,1.3,32),new THREE.TorusKnotGeometry(.55,.16,96,16),new THREE.ConeGeometry(.7,1.3,6)];
+ const P=[[-7,3,-2],[-6.3,-2.9,-1],[7,2.6,-2.5],[6.5,-3.1,-1.5],[-3.6,4.1,-3],[3.9,-4.3,-3],[.6,4.5,-4],[-1.3,-4.5,-3.5],[8.6,.2,-4],[-8.6,.4,-4]];
+ const mat=new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.3,roughness:.04,metalness:.05,clearcoat:1,clearcoatRoughness:.05,envMap:env,envMapIntensity:1.6,depthWrite:false});
+ P.forEach((p,i)=>{const g=GG[i%GG.length],m=new THREE.Mesh(g,mat);
+  m.add(new THREE.LineSegments(new THREE.EdgesGeometry(g,20),new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.35})));
+  m.position.set(p[0]*ax,p[1],p[2]);m.scale.setScalar(.7+(i%3)*.25);m.userData={r:.12+(i%4)*.06,f:i*1.7,y:p[1]};bg.add(m);shapes.push(m)});
+})();
+let px=0,py=0,bx=0,by=0;addEventListener('pointermove',e=>{px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5});
+const W=2,H=2.8,N=PAGES.length,G=.016,PW=512,PH=716,SEG=18;
+const im={};const faces=[];
+const FONT="'Fraunces',Georgia,serif",SANS="'Instrument Sans',system-ui,sans-serif";
+
+function wrap(g,text,x,y,mw,lh){text.split('\n').forEach(line=>{let cur='';line.split(' ').forEach(w=>{const tst=cur?cur+' '+w:w;if(g.measureText(tst).width>mw&&cur){g.fillText(cur,x,y);y+=lh;cur=w}else cur=tst});g.fillText(cur,x,y);y+=lh});return y}
+function fit(g,img,x,y,w,h){const r=Math.max(w/img.width,h/img.height),sw=w/r,sh=h/r;g.save();g.beginPath();g.roundRect(x,y,w,h,10);g.clip();g.drawImage(img,(img.width-sw)/2,(img.height-sh)/2,sw,sh,x,y,w,h);g.restore()}
+function slot(g,key,x,y,w,h,play){const i=im[key];if(i&&i.complete&&i.naturalWidth)fit(g,i,x,y,w,h);else{g.fillStyle='#dccfb3';g.beginPath();g.roundRect(x,y,w,h,10);g.fill();g.fillStyle='#8a7c5e';g.font='500 16px sans-serif';g.textAlign='center';g.fillText(IMG[key],x+w/2,y+h/2);g.textAlign='left'}
+ if(play){g.fillStyle='rgba(0,0,0,.55)';g.beginPath();g.arc(x+w/2,y+h/2,34,0,7);g.fill();g.fillStyle='#fff';g.beginPath();g.moveTo(x+w/2-10,y+h/2-16);g.lineTo(x+w/2+18,y+h/2);g.lineTo(x+w/2-10,y+h/2+16);g.fill()}}
+function drawPage(g,sp,side,n){n=sp.n||n;
+ g.fillStyle='#f3efe4';g.fillRect(0,0,PW,PH);
+ const x0=side==='R'?0:PW,gr=g.createLinearGradient(x0,0,x0+(side==='R'?100:-100),0);
+ gr.addColorStop(0,'rgba(40,50,40,.32)');gr.addColorStop(1,'rgba(40,50,40,0)');g.fillStyle=gr;g.fillRect(0,0,PW,PH);
+ const mx=side==='R'?58:46,mw=PW-110;g.textBaseline='alphabetic';g.textAlign='left';
+ if(sp.e){g.fillStyle='#7a6f55';g.font='600 13px '+SANS;g.fillText(sp.e.toUpperCase(),mx,72)}
+ g.fillStyle='#1d2420';g.font='600 38px '+FONT;let y=wrap(g,sp.t||'',mx,124,mw,45)+16;
+ (sp.i||[]).forEach(([h,b])=>{if(h){g.fillStyle='#173f35';g.font='600 21px '+FONT;y=wrap(g,h,mx,y,mw,28)}g.fillStyle='#4a4a40';g.font='400 19px '+SANS;y=wrap(g,b,mx,y+2,mw,27)+14});
+ if(n){g.fillStyle='#8a8266';g.font='500 13px '+SANS;g.textAlign=side==='R'?'right':'left';g.fillText('DIGISTORE / '+String(n).padStart(2,'0'),side==='R'?PW-48:48,PH-34)}
+}
+function drawCover(g){
+ const gr=g.createLinearGradient(0,0,PW,PH);gr.addColorStop(0,'#1f5244');gr.addColorStop(1,'#0f2c25');g.fillStyle=gr;g.fillRect(0,0,PW,PH);
+ g.strokeStyle='#e9d8a6';g.lineWidth=2;g.strokeRect(34,34,PW-68,PH-68);
+ g.fillStyle='#e9d8a6';g.textAlign='center';g.font='13px '+SANS;g.fillText('THE DIGISTORE EDITION / VOL. 01',PW/2,100);
+ g.font='600 66px '+FONT;g.fillText('DIGISTORE',PW/2,PH/2-10);
+ g.font='italic 500 34px '+FONT;g.fillText('Your next great chapter.',PW/2,PH/2+46);
+ g.font='13px '+SANS;g.fillText('QUALITY · VALUE · CONVENIENCE',PW/2,PH-80);
+}
+function mkTex(draw){const c=document.createElement('canvas');c.width=PW;c.height=PH;const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=renderer.capabilities.getMaxAnisotropy();const f={g:c.getContext('2d'),t,draw};faces.push(f);return t}
+const redraw=()=>faces.forEach(f=>{f.draw(f.g);f.t.needsUpdate=true});
+Object.keys(IMG).forEach(k=>{const i=new Image();i.onload=redraw;i.src=IMG[k];im[k]=i});
+
+const paperMat=m=>new THREE.MeshStandardMaterial({map:m,roughness:.9});
+const covMat=new THREE.MeshStandardMaterial({color:0x173f35,roughness:.55});
+const edgeMat=new THREE.MeshStandardMaterial({color:0xece6d4,roughness:1});
+
+const rig=new THREE.Group(),book=new THREE.Group();rig.add(book);scene.add(rig);
+const topC=N*G+.07;
+// back cover
+const tEnd=mkTex(g=>{drawPage(g,{},'R',0);g.fillStyle='#173f35';g.textAlign='center';g.font='italic 500 30px '+FONT;g.fillText('DIGISTORE.',PW/2,PH/2)});
+const back=new THREE.Mesh(new THREE.BoxGeometry(W,H,.06),[covMat,covMat,covMat,covMat,paperMat(tEnd),covMat]);back.position.set(W/2,0,-.03);book.add(back);
+// spine
+const spGeo=new THREE.BoxGeometry(.08,H,1);spGeo.translate(0,0,.5);
+const spine=new THREE.Mesh(spGeo,covMat);spine.position.set(-.035,0,-.06);book.add(spine);
+// page blocks
+const bGeo=new THREE.BoxGeometry(W-.1,H-.14,1);bGeo.translate(0,0,.5);
+const blockR=new THREE.Mesh(bGeo,edgeMat),blockL=new THREE.Mesh(bGeo,edgeMat);blockR.position.x=W/2;blockL.position.x=-W/2;book.add(blockR,blockL);
+// front cover
+const frontPiv=new THREE.Group();book.add(frontPiv);
+const tCover=mkTex(drawCover),tInside=mkTex(g=>drawPage(g,INSIDE,'L',0));
+const frontMesh=new THREE.Mesh(new THREE.BoxGeometry(W,H,.06),[covMat,covMat,covMat,covMat,new THREE.MeshStandardMaterial({map:tCover,roughness:.5}),paperMat(tInside)]);
+frontMesh.position.x=W/2;frontPiv.add(frontMesh);
+// leaves
+const leaves=PAGES.map((p,i)=>{
+ const piv=new THREE.Group(),w=W-.08;
+ const geo=new THREE.PlaneGeometry(w,H-.2,SEG,1);geo.translate(w/2,0,0);
+ const us=[];const pa=geo.attributes.position;for(let j=0;j<pa.count;j++)us.push(pa.getX(j)/w);
+ const tf=mkTex(g=>drawPage(g,p.f,'R',i*2+1)),tb=mkTex(g=>drawPage(g,p.b,'L',i*2+2));
+ tb.repeat.x=-1;tb.offset.x=1;tb.wrapS=THREE.RepeatWrapping;
+ piv.add(new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:tf,roughness:.9,side:THREE.FrontSide})));
+ piv.add(new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:tb,roughness:.9,side:THREE.BackSide})));
+ book.add(piv);
+ return{piv,geo,us,t:-1,zR:(N-i)*G+.012,zL:i*G+.012};
+});
+redraw();document.fonts&&document.fonts.ready.then(redraw);
+
+// scroll keyframes, one value per section
+const KX=[2.4,-2.9,2.9,0],KY=[0,0,0,.9],KR=[-.5,.18,-.18,0],KS=[1.1,.85,.85,.95];
+const samp=(a,s)=>{const i=Math.min(a.length-2,Math.floor(s));return lerp(a[i],a[i+1],sm(s-i))};
+
+function resize(){renderer.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
+addEventListener('resize',resize);resize();
+
+let sC=0,last=performance.now();
+function frame(now){
+ const dt=Math.min(.05,(now-last)/1000);last=now;
+ const sT=cl(scrollY/(innerHeight*1.2),0,N+1);
+ sC+=(sT-sC)*(RM?1:Math.min(1,dt*5));
+ const narrow=innerWidth<760,wf=cl(innerWidth/1300,.6,1);
+ const o=sm(cl(sC,0,1));
+ // book geometry state
+ frontPiv.rotation.y=-Math.PI*o;frontPiv.position.z=lerp(topC,-.03,o);
+ spine.scale.z=(topC+.03+.06)*(1-o)+.06*o;
+ book.position.x=-W/2*(1-o);
+ let sum=0;
+ leaves.forEach((L,i)=>{
+  const t=sm(cl(sC-(i+1),0,1));sum+=t;
+  L.piv.rotation.y=-Math.PI*t;L.piv.position.z=lerp(L.zR,L.zL,t);
+  if(Math.abs(t-L.t)>1e-4){L.t=t;const pa=L.geo.attributes.position,b=-Math.sin(Math.PI*t)*.6;for(let j=0;j<pa.count;j++)pa.setZ(j,b*L.us[j]*L.us[j]);pa.needsUpdate=true;L.geo.computeVertexNormals()}
+ });
+ const hR=Math.max(.001,(N-sum)*G-.01),hL=Math.max(.001,sum*G-.01);
+ blockR.scale.z=hR;blockL.scale.z=hL;blockL.visible=o>.5;
+ // rig transform
+ const idle=RM?0:Math.sin(now/1000*.9);
+ rig.position.set(narrow?0:samp(KX,sC)*wf,(narrow?1.15:samp(KY,sC))+idle*.06,0);
+ const past=cl((scrollY-innerHeight*1.2*(N+1))/(innerHeight*.9),0,1);rig.visible=past<1;rig.position.y+=past*8;
+ rig.rotation.set(-.12+idle*.02,samp(KR,sC),idle*.012);
+ book.rotation.x=0;
+ const sc=samp(KS,sC)*(narrow?.56:wf);rig.scale.setScalar(sc);
+ const tt=now/1000;
+ if(!RM){dust.rotation.y=tt*.012;dust.rotation.z=tt*.006;shapes.forEach(m=>{m.rotation.x+=dt*m.userData.r;m.rotation.y+=dt*m.userData.r*.7;m.position.y=m.userData.y+Math.sin(tt*.4+m.userData.f)*.4});bx+=(px-bx)*.04;by+=(py-by)*.04}
+ bg.position.set(-bx*1.4,by*.9+sC*.3,0);
+ renderer.render(scene,cam);requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+}
+</script>
+<script>
+(function(){var RY=-18,RX=4,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var items=[].map.call(document.querySelectorAll('.bk'),function(el){var st=el.querySelector('.stage'),o={cu:el.querySelector('.cube'),ry:RY,rx:RX,hover:false,drag:false,lx:0,ly:0};
+st.addEventListener('pointerenter',function(){o.hover=true});st.addEventListener('pointerleave',function(){o.hover=false});
+st.addEventListener('pointerdown',function(e){o.drag=true;o.lx=e.clientX;o.ly=e.clientY;st.setPointerCapture(e.pointerId)});
+st.addEventListener('pointermove',function(e){if(!o.drag)return;o.ry+=(e.clientX-o.lx)*.7;o.rx=Math.max(-35,Math.min(35,o.rx-(e.clientY-o.ly)*.4));o.lx=e.clientX;o.ly=e.clientY});
+var up=function(){o.drag=false};st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);return o});
+var last=performance.now();
+function tick(n){var dt=Math.min(.05,(n-last)/1000);last=n;
+items.forEach(function(o){if(o.drag){}else if(o.hover&&!rm){o.ry+=dt*38}else{var t=RY+Math.round((o.ry-RY)/360)*360,k=Math.min(1,dt*4);o.ry+=(t-o.ry)*k;o.rx+=(RX-o.rx)*k}
+o.cu.style.transform='rotateX('+o.rx+'deg) rotateY('+o.ry+'deg)'});requestAnimationFrame(tick)}
+requestAnimationFrame(tick)})();
+</script>
+</body>
+</html>
